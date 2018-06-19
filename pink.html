@@ -1,0 +1,120 @@
+ <html>
+<head>
+<link rel="stylesheet" type="text/css" href="pink.css" />
+</head>
+<body>
+
+<h1> STUDENT DETAILS</h1>
+
+<form id="box">
+Name:
+<br>
+<input type="text" id= "Name" value="" >
+</br>
+Surname:
+<br>
+<input type="text"  id= "Surname" value ="" >
+</br>
+Age:
+<br>
+<input type="text" id= "Age"  value="">
+</br>
+
+</form>
+
+<br>
+<button  onclick= "Add()"> Add</button>
+</br>
+<br>
+<button  onclick= "Display()">Displaying</button>
+</br>                                                                                                                                                                                                                         
+<br>
+<button  onclick= " Remove()"> Delete</button><br>
+</br>
+
+<br>
+<div id="container">
+</div>
+</br>
+
+
+<script>
+var student = {Name,Surname,Age};
+var code=[];
+
+
+function Add(){
+
+    student.Name = document.getElementById("Name").value;
+	student.Surname = document.getElementById("Surname").value;
+	student.Age = document.getElementById("Age").value;
+	  
+	if (student.Name == "")
+	{
+	alert("please enter your name");
+	}
+
+	if (student.Age >= 35)
+	{
+	alert ("you are too old to register here!!!!!!!!");
+
+	}
+	else{
+
+     var details = "name: "+student.Name+" Surname: "+student.Surname+"  Age: "+student.Age ;
+	   
+	 code.push(details);   
+	
+	 
+         student.Name = document.getElementById("Name").value="";
+	 student.Surname = document.getElementById("Surname").value="";
+	 student.Age = document.getElementById("Age").value="";
+	 
+	 }
+
+
+  }
+
+function Display(){		
+	for(var i in code){
+	
+		    var ptag  = document.createElement("p");
+			 ptag.setAttribute("id","show");
+			ptag.innerHTML = code[i]+"";
+				
+			var  Delete = document.createElement("input");
+			Delete.setAttribute("type","button");
+			Delete.setAttribute("value"," Delete");
+			Delete.setAttribute("onclick","deletetag()");
+			Delete.setAttribute("style","background-color:red;");
+			ptag.appendChild(Delete);
+			
+		   var container = document.getElementById("container");
+			container.appendChild(ptag);
+			
+	}
+}
+
+  
+  function Remove(){
+    var container = document.getElementById("container");
+    container.remove();
+   
+   var container =  document.createElement("div");
+   container.setAttribute("id","container");
+   document.body.appendChild(container);
+   
+  }
+    function deletetag(){
+	   var del  = document.getElementById("show");
+      del.remove();
+	}
+ 
+</script>
+
+
+
+
+</body>
+</html>
+
